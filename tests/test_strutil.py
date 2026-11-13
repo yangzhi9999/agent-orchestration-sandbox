@@ -42,6 +42,12 @@ class SlugifyTests(unittest.TestCase):
   def testAlreadySlug(self):
     self.assertEqual(self.strutil.slugify("hello-world"), "hello-world")
 
+  def testAccentedLatin(self):
+    self.assertEqual(self.strutil.slugify("Café Déjà Vu"), "cafe-deja-vu")
+
+  def testNonAsciiStripped(self):
+    self.assertEqual(self.strutil.slugify("東京 Tokyo"), "tokyo")
+
 
 if __name__ == "__main__":
   unittest.main()
